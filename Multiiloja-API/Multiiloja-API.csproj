@@ -7,4 +7,8 @@
     <RootNamespace>Multiiloja_BACK</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Multiloja-BLL\Multiloja-BLL.csproj" />
+  </ItemGroup>
+
 </Project>

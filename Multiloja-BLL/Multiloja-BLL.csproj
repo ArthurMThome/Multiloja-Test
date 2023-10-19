@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Multiloja-DAL\Multiloja-DAL.csproj" />
+  </ItemGroup>
+
 </Project>
