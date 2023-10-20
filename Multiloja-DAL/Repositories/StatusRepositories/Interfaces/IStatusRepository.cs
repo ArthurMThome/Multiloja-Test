@@ -4,6 +4,6 @@ namespace Multiloja_DAL.Repositories.StatusRepositories.Interfaces
 {
     public interface IStatusRepository
     {
-        int Create(Status obj);
+        Status FindById(int id);
     }
 }

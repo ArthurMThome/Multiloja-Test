@@ -13,19 +13,20 @@ namespace Multiloja_DAL.Repositories.StatusRepositories
             _dapper = dapper;
         }
 
-        public int Create(Status obj)
+        public Status FindById(int id)
         {
             try
             {
-                var _sql = "INSERT INTO tb_status (strStatus,strDescricao) VALUES ( @strStatus,@strDescricao);";
+                var _sql = @"   SELECT idStatus
+                                    ,strStatus
+                                    ,strDescricao
+                                FROM tb_status
+                                WHERE idStatus = @idStatus";
 
-                var teste = _dapper.InsertReturnInt(_sql, new Status
+                return _dapper.Select<Status>(_sql, new Status
                 {
-                    strStatus = obj.strStatus,
-                    strDescricao = obj.strDescricao
-                });
-
-                return teste;
+                    idStatus = id
+                }).FirstOrDefault();
             }
             catch (Exception ex)
             {
