@@ -13,17 +13,37 @@ namespace Multiloja_DAL.Repositories.TipoDocumentoRepositories
             _dapper = dapper;
         }
 
-        public int Create(TipoDocumento obj)
+        public TipoDocumento FindById(int id)
         {
             try
             {
-                var _sql = "INSERT INTO tb_tipo_documento (strTipoDocumento,strDescricao) VALUES ( @strTipoDocumento,@strDescricao); SELECT SCOPE_IDENTITY();";
+                var _sql = @"   SELECT idTipoDocumento
+                                    ,strTipoDocumento
+                                    ,strDescricao
+                                FROM tb_tipo_documento
+                                WHERE idTipoDocumento = @idTipoDocumento";
 
-                return _dapper.InsertReturnInt(_sql, new TipoDocumento
+                return _dapper.Select<TipoDocumento>(_sql, new TipoDocumento
                 {
-                    strTipoDocumento = obj.strTipoDocumento,
-                    strDescricao = obj.strDescricao
-                });
+                    idTipoDocumento = id
+                }).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<TipoDocumento> GetAll(int id)
+        {
+            try
+            {
+                var _sql = @"   SELECT idTipoDocumento
+                                    ,strTipoDocumento
+                                    ,strDescricao
+                                FROM tb_tipo_documento";
+
+                return _dapper.Select<TipoDocumento>(_sql);
             }
             catch (Exception ex)
             {

@@ -9,9 +9,9 @@ namespace Multiiloja_BACK.Controllers
     [Route("api/[controller]")]
     public class CarrinhoController : ControllerBase
     {
-        private readonly ICarrinhoServices _service;
+        private readonly ICarrinhoService _service;
 
-        public CarrinhoController(ICarrinhoServices service)
+        public CarrinhoController(ICarrinhoService service)
         {
             _service = service;
         }

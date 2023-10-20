@@ -2,7 +2,7 @@
 
 namespace Multiloja_BLL.Services.CarrinhoServices.Interfaces
 {
-    public interface ICarrinhoServices
+    public interface ICarrinhoService
     {
         DefaultReturn<int> Create(CarrinhoVO obj);
         DefaultReturn<List<CarrinhoVO>> FindByClienteId(int id);

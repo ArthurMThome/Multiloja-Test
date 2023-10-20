@@ -5,7 +5,7 @@ using Multiloja_DAL.Repositories.CarrinhoRepositories.Interfaces;
 
 namespace Multiloja_BLL.Services.CarrinhoServices
 {
-    public class CarrinhoService : ICarrinhoServices
+    public class CarrinhoService : ICarrinhoService
     {
         private readonly ICarrinhoRepository _repository;
         private readonly CarrinhoConverter _converter;

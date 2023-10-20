@@ -4,6 +4,7 @@ namespace Multiloja_DAL.Repositories.TipoDocumentoRepositories.Interfaces
 {
     public interface ITipoDocumentoRepository
     {
-        int Create(TipoDocumento obj);
+        TipoDocumento FindById(int id);
+        List<TipoDocumento> GetAll(int id);
     }
 }
