@@ -6,15 +6,15 @@
 <mat-sidenav-container>
     <mat-sidenav  opened="true" mode="side">
         <mat-nav-list>
-            <a mat-list-item>Home</a>
-            <a mat-list-item>Loja</a>
-            <a mat-list-item>Logar</a>
-            <a mat-list-item>Cliente</a>
-            <a mat-list-item>Produto</a>
+            <a [routerLink]="['/loja']" mat-list-item>Loja</a>
+            <a [routerLink]="['/logar']" mat-list-item>Logar</a>
+            <a [routerLink]="['/cliente']" mat-list-item>Cliente</a>
+            <a [routerLink]="['/produto']" mat-list-item>Produto</a>
+            <a [routerLink]="['/carrinho']" mat-list-item>Carrinho</a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div style="height: 88vh;">
+        <div style="height: 80vh;">
             <router-outlet>                
             </router-outlet>
         </div>

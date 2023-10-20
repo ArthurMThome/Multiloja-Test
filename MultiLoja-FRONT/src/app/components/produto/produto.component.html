@@ -1,0 +1,83 @@
+<div *ngIf="!produtos">
+    <mat-progress-bar mode="buffer"></mat-progress-bar>
+  </div>
+  
+  <div class="dadosCategorias" *ngIf="produtos">
+  
+    <div class="cabecalho">
+      <button mat-raised-button>Cadastrar Contato</button>
+    </div>
+  
+    <table mat-table matSort [dataSource]="produtos" class="mat-elevation-z8 tabela">
+  
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+        <td mat-cell *matCellDef="let produto">
+          {{ produto.produtoId }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="sku">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>SKU</th>
+        <td mat-cell *matCellDef="let produto">
+          {{ produto.sku }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="titulo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Título</th>
+        <td mat-cell *matCellDef="let produto">
+          {{ produto.titulo }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Descricao</th>
+        <td mat-cell *matCellDef="let produto">
+          {{ produto.descricao }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="valor">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Valor</th>
+        <td mat-cell *matCellDef="let produto">
+          {{ produto.valor }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="dataCriacao">
+        <th mat-header-cell *matHeaderCellDef>Data Criação</th>
+        <td mat-cell *matCellDef="let produto">
+          {{ produto.dataCriacao }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataAlterado">
+        <th mat-header-cell *matHeaderCellDef>Data Alterado</th>
+        <td mat-cell *matCellDef="let produto">
+          {{ produto.dataAlterado }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let produto">
+          {{ produto.statusId }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantidade">
+        <th mat-header-cell *matHeaderCellDef>Quantidade</th>
+        <td mat-cell *matCellDef="let produto">
+          {{ produto.quantidade }}
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColunms"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColunms"></tr>
+  
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+  

@@ -24,6 +24,14 @@ builder.Services.AddScoped<Multiloja_DAL.Repositories.CarrinhoRepositories.Inter
 builder.Services.AddScoped<Multiloja_DAL.Repositories.DocumentoRepositories.Interfaces.IDocumentoRepository, Multiloja_DAL.Repositories.DocumentoRepositories.DocumentoRepository>();
 builder.Services.AddScoped<Multiloja_DAL.Repositories.TipoDocumentoRepositories.Interfaces.ITipoDocumentoRepository, Multiloja_DAL.Repositories.TipoDocumentoRepositories.TipoDocumentoRepository>();
 
+// precisa ver realmente se vai precisar de CORS ou nao. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+builder.Services.AddCors(options => options.AddDefaultPolicy(builder =>
+{
+    builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+                .AllowAnyHeader();
+}));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -44,5 +52,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "api/{controller=Index}/{action=Index}/{id?}");
+
+app.UseCors();
 
 app.Run();
