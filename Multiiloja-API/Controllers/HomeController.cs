@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Multiloja_BLL;
 using Multiloja_DAL.Models;
 using Multiloja_DAL.Repositories.CarrinhoRepositories.Interfaces;
 using Multiloja_DAL.Repositories.ClienteRepositories.Interfaces;
@@ -16,7 +17,7 @@ namespace Multiiloja_BACK.Controllers
             _repositoryC = repositoryC;
         }
 
-        public IActionResult Index()
+        public DefaultReturn<Cliente> Index()
         {
             var clienteId = _repositoryC.Create(new Cliente
             {

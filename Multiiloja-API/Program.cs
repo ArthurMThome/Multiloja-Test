@@ -8,6 +8,8 @@ builder.Services.AddScoped<Multiloja_DAL.Dapper.Interfaces.IDataAccessDapper, Mu
 
 
 // ****************** SERVICES ******************
+builder.Services.AddScoped<Multiloja_BLL.Services.CarrinhoServices.Interfaces.ICarrinhoServices, Multiloja_BLL.Services.CarrinhoServices.CarrinhoService>();
+
 
 // ****************** REPOSITORIES ******************
 builder.Services.AddScoped<Multiloja_DAL.Repositories.StatusRepositories.Interfaces.IStatusRepository, Multiloja_DAL.Repositories.StatusRepositories.StatusRepository>();
@@ -36,6 +38,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "api/{controller=Index}/{action=Index}/{id?}");
 
 app.Run();

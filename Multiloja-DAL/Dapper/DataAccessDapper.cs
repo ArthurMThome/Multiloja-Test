@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Multiloja_DAL.Dapper.Interfaces;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Multiloja_DAL.Dapper
@@ -7,6 +8,8 @@ namespace Multiloja_DAL.Dapper
     public class DataAccessDapper : IDataAccessDapper
     {
         private const string connectionString = "Data Source=ARTHURTHOME\\SQLEXPRESS;Initial Catalog=multiloja;Trusted_Connection=True;User Id=sa;Password=teste123";
+
+        private SqlTransaction myTransaction;
 
         public List<T> Select<T>(string _sql, object _parm = default)
         {
@@ -116,7 +119,7 @@ namespace Multiloja_DAL.Dapper
                 {
                     con.Open();
 
-                    intUltimoInserido = con.Execute(_sql, _parm);
+                    intUltimoInserido = int.Parse(con.ExecuteScalar(_sql, _parm).ToString());
                 }
                 return intUltimoInserido;
             }

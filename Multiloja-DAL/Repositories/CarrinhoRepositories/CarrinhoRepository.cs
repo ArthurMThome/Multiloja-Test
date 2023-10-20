@@ -22,11 +22,11 @@ namespace Multiloja_DAL.Repositories.CarrinhoRepositories
                                        ,idStatus
                                        ,idCliente
                                        ,strCodigoCarrinho)
-                                 VALUES
+                                VALUES
                                        (@idProduto
                                        ,1
                                        ,@idCliente
-                                       ,@strCodigoCarrinho)
+                                       ,@strCodigoCarrinho);
                                 SELECT SCOPE_IDENTITY();";
 
 
@@ -36,6 +36,46 @@ namespace Multiloja_DAL.Repositories.CarrinhoRepositories
                     idCliente = obj.idCliente,
                     strCodigoCarrinho = obj.strCodigoCarrinho
                 });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Carrinho> FindByClienteId(int id)
+        {
+            try
+            {   
+                var _sql = @"   SELECT idCarrinho
+                                    ,idProduto
+                                    ,dtDataCriacao
+                                    ,idStatus
+                                    ,idCliente
+                                    ,strCodigoCarrinho
+                                FROM tb_carrinho
+                                WHERE idCliente = @idCliente
+                                AND idStatus = 1";
+
+
+                return _dapper.Select<Carrinho>(_sql, new Carrinho { idCliente = @id });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool Update(int idCarrinho)
+        {
+            try
+            {
+                var _sql = @"   UPDATE tb_carrinho
+                                SET 
+                                    idStatus = 2
+                                WHERE idCarrinho = @idCarrinho;";
+
+                return _dapper.UpdateOrDelete<Carrinho>(_sql, new Carrinho { idCarrinho = idCarrinho });
             }
             catch (Exception ex)
             {
