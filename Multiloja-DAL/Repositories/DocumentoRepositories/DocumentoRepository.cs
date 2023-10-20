@@ -25,13 +25,32 @@ namespace Multiloja_DAL.Repositories.DocumentoRepositories
                                        ,@idTipoDocumento);
                                 SELECT SCOPE_IDENTITY();";
 
-                var teste = _dapper.InsertReturnInt(_sql, new Documento
+                return _dapper.InsertReturnInt(_sql, new Documento
                 {
                     strDocumento = obj.strDocumento,
                     idTipoDocumento = obj.idTipoDocumento
                 });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-                return teste;
+        public Documento FindById(int id)
+        {
+            try
+            {
+                var _sql = @"   SELECT idDocumento
+                                    ,strDocumento
+                                    ,idTipoDocumento
+                                FROM tb_documento
+                                WHERE idDocumento = @idDocumento";
+
+                return _dapper.Select<Documento>(_sql, new Documento
+                {
+                    idDocumento = id
+                }).FirstOrDefault();
             }
             catch (Exception ex)
             {
