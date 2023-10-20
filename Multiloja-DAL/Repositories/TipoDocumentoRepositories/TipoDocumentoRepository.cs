@@ -34,7 +34,7 @@ namespace Multiloja_DAL.Repositories.TipoDocumentoRepositories
             }
         }
 
-        public List<TipoDocumento> GetAll(int id)
+        public List<TipoDocumento> GetAll()
         {
             try
             {

@@ -25,7 +25,7 @@ namespace Multiiloja_BACK.Controllers
         [HttpGet]
         public DefaultReturn<List<TipoDocumentoVO>> GetAll(int id)
         {
-            return _service.GetAll(id);
+            return _service.GetAll();
         }
     }
 }

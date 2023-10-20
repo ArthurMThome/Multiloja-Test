@@ -40,11 +40,61 @@ namespace Multiloja_DAL.Repositories.ProdutoRepositories
                     strTitulo = obj.strTitulo,
                     strDescricao = obj.strDescricao,
                     decValor = obj.decValor,
-                    dtDataAlterado = obj.dtDataAlterado,
+                    dtDataAlterado = DateTime.Now,
                     intQuantidade = obj.intQuantidade
                 });
 
                 return teste;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Produto FindById(int id)
+        {
+            try
+            {
+                var _sql = @"   SELECT idProduto
+                                    ,strSku
+                                    ,strTitulo
+                                    ,strDescricao
+                                    ,decValor
+                                    ,dtDataCriacao
+                                    ,dtDataAlterado
+                                    ,idStatus
+                                    ,intQuantidade
+                                FROM tb_produto
+                                WHERE idProduto = @idProduto";
+
+                return _dapper.Select<Produto>(_sql, new Produto
+                {
+                    idProduto = id
+                }).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Produto> GetAll()
+        {
+            try
+            {
+                var _sql = @"   SELECT idProduto
+                                    ,strSku
+                                    ,strTitulo
+                                    ,strDescricao
+                                    ,decValor
+                                    ,dtDataCriacao
+                                    ,dtDataAlterado
+                                    ,idStatus
+                                    ,intQuantidade
+                                FROM tb_produto";
+
+                return _dapper.Select<Produto>(_sql);
             }
             catch (Exception ex)
             {

@@ -5,6 +5,6 @@ namespace Multiloja_DAL.Repositories.TipoDocumentoRepositories.Interfaces
     public interface ITipoDocumentoRepository
     {
         TipoDocumento FindById(int id);
-        List<TipoDocumento> GetAll(int id);
+        List<TipoDocumento> GetAll();
     }
 }

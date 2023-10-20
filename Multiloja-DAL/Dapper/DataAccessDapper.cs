@@ -119,7 +119,10 @@ namespace Multiloja_DAL.Dapper
                 {
                     con.Open();
 
-                    intUltimoInserido = int.Parse(con.ExecuteScalar(_sql, _parm).ToString());
+                    var retorno = con.ExecuteScalar(_sql, _parm)?.ToString();
+
+                    if(retorno != null)
+                        intUltimoInserido = int.Parse(retorno);
                 }
                 return intUltimoInserido;
             }

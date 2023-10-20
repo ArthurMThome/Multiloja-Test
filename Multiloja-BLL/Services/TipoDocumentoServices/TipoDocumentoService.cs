@@ -35,11 +35,11 @@ namespace Multiloja_BLL.Services.TipoDocumentoServices
             }
         }
 
-        public DefaultReturn<List<TipoDocumentoVO>> GetAll(int id)
+        public DefaultReturn<List<TipoDocumentoVO>> GetAll()
         {
             try
             {
-                var retornoList = _repository.GetAll(id);
+                var retornoList = _repository.GetAll();
 
                 if (retornoList == null || retornoList.Count <= 0)
                     return new DefaultReturn<List<TipoDocumentoVO>> { httpStatusCode = System.Net.HttpStatusCode.BadRequest, msg = "A lista está vazia." };
