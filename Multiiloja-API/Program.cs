@@ -10,6 +10,7 @@ builder.Services.AddScoped<Multiloja_DAL.Dapper.Interfaces.IDataAccessDapper, Mu
 // ****************** SERVICES ******************
 builder.Services.AddScoped<Multiloja_BLL.Services.StatusServices.Interfaces.IStatusService, Multiloja_BLL.Services.StatusServices.StatusService>();
 builder.Services.AddScoped<Multiloja_BLL.Services.ProdutoServices.Interfaces.IProdutoService, Multiloja_BLL.Services.ProdutoServices.ProdutoService>();
+builder.Services.AddScoped<Multiloja_BLL.Services.ClienteServices.Interfaces.IClienteService, Multiloja_BLL.Services.ClienteServices.ClienteService >();
 builder.Services.AddScoped<Multiloja_BLL.Services.CarrinhoServices.Interfaces.ICarrinhoService, Multiloja_BLL.Services.CarrinhoServices.CarrinhoService>();
 builder.Services.AddScoped<Multiloja_BLL.Services.DocumentoServices.Interfaces.IDocumentoService, Multiloja_BLL.Services.DocumentoServices.DocumentoService>();
 builder.Services.AddScoped<Multiloja_BLL.Services.TipoDocumentoServices.Interfaces.ITipoDocumentoService, Multiloja_BLL.Services.TipoDocumentoServices.TipoDocumentoService>();

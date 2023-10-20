@@ -45,8 +45,32 @@ namespace Multiloja_DAL.Repositories.ClienteRepositories
                     strCelular = obj.strCelular,
                     strEmail = obj.strEmail,
                     dtDataNascimento = obj.dtDataNascimento,
-                    dtDataAlterado = obj.dtDataAlterado
+                    dtDataAlterado = DateTime.Now
                 });
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<Cliente> GetAll()
+        {
+            try
+            {
+                var _sql = @"   SELECT idCliente
+                                      ,idDocumento
+                                      ,strPrimeiroNome
+                                      ,strUltimoNome
+                                      ,strCelular
+                                      ,strEmail
+                                      ,dtDataNascimento
+                                      ,idStatus
+                                      ,dtDataCriacao
+                                      ,dtDataAlterado
+                                  FROM tb_cliente";
+
+                return _dapper.Select<Cliente>(_sql);
             }
             catch (Exception ex)
             {
