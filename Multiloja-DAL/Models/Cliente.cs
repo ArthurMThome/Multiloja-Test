@@ -21,14 +21,5 @@
         public DateTime dtDataCriacao { get; set; }
 
         public DateTime dtDataAlterado { get; set; }
-
-        public int idCarrinho { get; set; }
-
-
-        public Documento Documento { get; set; }
-
-        public Carrinho Carrinho { get; set; }
-
-        public Status Status { get; set; }
     }
 }

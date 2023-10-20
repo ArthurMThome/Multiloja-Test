@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Multiloja-BLL\Multiloja-BLL.csproj" />
+    <ProjectReference Include="..\Multiloja-DAL\Multiloja-DAL.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,8 +7,5 @@
         public string strDocumento { get; set; }
 
         public int idTipoDocumento { get; set; }
-
-
-        public TipoDocumento TipoDocumento { get; set; }
     }
 }

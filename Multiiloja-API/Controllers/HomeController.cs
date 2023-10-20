@@ -1,32 +1,42 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Multiiloja_BACK.Models;
-using System.Diagnostics;
+using Multiloja_DAL.Models;
+using Multiloja_DAL.Repositories.CarrinhoRepositories.Interfaces;
+using Multiloja_DAL.Repositories.ClienteRepositories.Interfaces;
 
 namespace Multiiloja_BACK.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ICarrinhoRepository _repository;
+        private readonly IClienteRepository _repositoryC;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ICarrinhoRepository repository, IClienteRepository repositoryC)
         {
-            _logger = logger;
+            _repository = repository;
+            _repositoryC = repositoryC;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
+            var clienteId = _repositoryC.Create(new Cliente
+            {
+                idDocumento = 1,
+                strPrimeiroNome = "Arthur",
+                strUltimoNome = "Thomé",
+                strCelular = "992013017",
+                strEmail = "arthurthome02@gmail.com",
+                dtDataNascimento = DateTime.Now,
+                dtDataAlterado = DateTime.Now
+            });
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+            _repository.Create(new Carrinho
+            {
+                idProduto = 1,
+                idCliente = clienteId,
+                strCodigoCarrinho = "123abc"
+            });
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+            return null;
+        }        
     }
 }

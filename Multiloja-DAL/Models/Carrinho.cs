@@ -10,9 +10,8 @@
 
         public int idStatus { get; set; }
 
+        public int idCliente { get; set; }
 
-        public Produto Produto { get; set; }
-
-        public Status Status { get; set; }
+        public string strCodigoCarrinho { get; set; }
     }
 }

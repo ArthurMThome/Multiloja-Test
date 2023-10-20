@@ -4,7 +4,7 @@
     {
         public int idProduto { get; set; }
 
-        public string strSKU { get; set; }
+        public string strSku { get; set; }
 
         public string strTitulo { get; set; }
 
@@ -14,11 +14,10 @@
 
         public DateTime dtDataCriacao { get; set; }
 
-        public DateTime dtDataAlteracao { get; set; }
+        public DateTime dtDataAlterado { get; set; }
 
         public int idStatus { get; set; }
 
-
-        public Status Status { get; set; }
+        public int intQuantidade { get; set; }
     }
 }
