@@ -1,1 +1,65 @@
-<p>logar works!</p>
+<div *ngIf="!clientes">
+    <mat-progress-bar mode="buffer"></mat-progress-bar>
+  </div>
+  
+  <div class="dadosCategorias" *ngIf="clientes">
+
+    <h1>Escolha com qual cliente deseja logar</h1>
+    <br>
+    <br>
+
+    <div>
+        <h2>Cliente logado id: {{user}}</h2>
+    </div>
+  
+    <table mat-table matSort [dataSource]="clientes" class="mat-elevation-z8 tabela">
+  
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.clienteId }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="documento">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>CPF</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.documento }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="primeiroNome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Primeiro nome</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.primeiroNome }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ultimoNome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ultimo nome</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.ultimoNome }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>E-mail</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.email }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let cliente">
+          <button mat-fab color="primary" (click)="logar(cliente.clienteId)" >LOGAR</button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColunms"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColunms"></tr>
+  
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>
