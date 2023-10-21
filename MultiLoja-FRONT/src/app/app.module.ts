@@ -19,6 +19,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table'  
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ProdutoService } from './services/produto.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -44,7 +45,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatPaginatorModule,
     MatProgressBarModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     HttpClientModule,

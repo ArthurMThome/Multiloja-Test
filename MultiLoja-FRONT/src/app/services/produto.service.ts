@@ -27,4 +27,9 @@ export class ProdutoService {
     const apiurl = `${this.apiUrl}/${produtoId}`;
     return this.http.get<any>(apiurl);
   }
+
+  criarProduto(produto: object): Observable<any>{
+    const apiurl = `${this.apiUrl}`;
+    return this.http.post<any>(apiurl, produto);
+  }
 }

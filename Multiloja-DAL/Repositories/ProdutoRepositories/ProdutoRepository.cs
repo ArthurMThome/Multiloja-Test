@@ -92,7 +92,8 @@ namespace Multiloja_DAL.Repositories.ProdutoRepositories
                                     ,dtDataAlterado
                                     ,idStatus
                                     ,intQuantidade
-                                FROM tb_produto";
+                                FROM tb_produto
+                                ORDER BY idProduto DESC";
 
                 return _dapper.Select<Produto>(_sql);
             }
