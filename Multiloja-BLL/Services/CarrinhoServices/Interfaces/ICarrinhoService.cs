@@ -6,6 +6,6 @@ namespace Multiloja_BLL.Services.CarrinhoServices.Interfaces
     {
         DefaultReturn<int> Create(CarrinhoVO obj);
         DefaultReturn<List<CarrinhoVO>> FindByClienteId(int id);
-        DefaultReturn<bool> Delete(int idCarrinho);
+        DefaultReturn<bool> Delete(string idCarrinho);
     }
 }

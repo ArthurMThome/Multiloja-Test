@@ -4,11 +4,14 @@
     <h1>Carrinho do cliente id: {{userLogado}}</h1>
 
     <br>
-    <br>
+    <br>    
 
     <h1>Código do carrinho: {{carrinhoCodigo}}</h1>
-  
-    <table mat-table matSort [dataSource]="produtos" class="mat-elevation-z8 tabela">
+    <div>
+
+    </div>
+    <div *ngIf="carrinho">
+      <table mat-table matSort [dataSource]="produtos" class="mat-elevation-z8 tabela">
   
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
@@ -48,7 +51,20 @@
       <tr mat-header-row *matHeaderRowDef="displayedColunms"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColunms"></tr>
   
-    </table>
+      </table>
+      
+      <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+      
+      <h1>Total do carrinho: {{totalCarrinho}}</h1>
+      <button type="button" class="btn btn-success" (click)="finalizarCompraCarrinho()">Finalizar compra</button>
+    </div>
   
-    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+
+
+
+    <br>
+    <div *ngIf="finalizarcompra">
+      <h1 >Compra de {{totalCarrinho}} finalizada com sucesso. 
+          <br>Obrigado por comprar na Multiloja.</h1>
+    </div>
   </div>

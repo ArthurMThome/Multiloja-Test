@@ -52,7 +52,7 @@ namespace Multiloja_BLL.Services.CarrinhoServices
             }
         }
 
-        public DefaultReturn<bool> Delete(int idCarrinho)
+        public DefaultReturn<bool> Delete(string idCarrinho)
         {
             try
             {

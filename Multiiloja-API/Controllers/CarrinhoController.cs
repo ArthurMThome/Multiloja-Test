@@ -29,7 +29,7 @@ namespace Multiiloja_BACK.Controllers
         }
 
         [HttpPut("{idCarrinho}")]
-        public DefaultReturn<bool> Delete(int idCarrinho)
+        public DefaultReturn<bool> Delete(string idCarrinho)
         {
             return _service.Delete(idCarrinho);
         }

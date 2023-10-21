@@ -28,4 +28,9 @@ export class CarrinhoService {
     const apiurl = `${this.apiUrl}`;
     return this.http.post<any>(apiurl, carrinho);
   }
+
+  deleterCarrinho(carrinhoId: string): Observable<any>{
+    const apiurl = `${this.apiUrl}/${carrinhoId}`;
+    return this.http.put<any>(apiurl, null);
+  }
 }

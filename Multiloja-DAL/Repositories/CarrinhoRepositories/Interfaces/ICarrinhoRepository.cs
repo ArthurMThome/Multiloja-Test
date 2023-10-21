@@ -6,6 +6,6 @@ namespace Multiloja_DAL.Repositories.CarrinhoRepositories.Interfaces
     {
         int Create(Carrinho obj);
         List<Carrinho> FindByClienteId(int id);
-        bool Update(int idCarrinho);
+        bool Update(string ids);
     }
 }

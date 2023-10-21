@@ -15,6 +15,8 @@ export class CarrinhoComponent {
   userLogado = "";
   carrinho = [];
   carrinhoCodigo = "";
+  totalCarrinho = 0;
+  finalizarcompra = false;
 
   @ViewChild(MatPaginator)
   paginator: MatPaginator
@@ -33,12 +35,12 @@ export class CarrinhoComponent {
   atualizarList() : void {
     this.carrinhoService.pegarPorClienteId(Number(this.userLogado)).subscribe(result => {
       this.carrinho = result.obj;
-      this.carrinhoCodigo = this.carrinho[0].codigoCarrinho;
-
+      
       if(this.carrinho === null){
         return;
       }
       
+      this.carrinhoCodigo = this.carrinho[0].codigoCarrinho;
       var carrinhoIds = [];
 
       this.carrinho.forEach(element => {
@@ -50,8 +52,31 @@ export class CarrinhoComponent {
         this.produtos.paginator = this.paginator;
   
         this.displayedColunms = this.exibirColunas();
+
+        this.produtos.data.forEach(item =>{
+          this.totalCarrinho += item.valor;
+        })
       });
     });    
+  }
+
+  finalizarCompraCarrinho(){
+    this.finalizarcompra = true;
+    this.limparCarrinho();
+  }
+
+  limparCarrinho(){
+
+    var carrinhoIds = [];
+
+    this.carrinho.forEach(element => {
+      carrinhoIds.push(element.carrinhoId);
+    });  
+
+    this.carrinhoService.deleterCarrinho(carrinhoIds.join(",")).subscribe(result => {
+      
+      this.atualizarList(); 
+    }); 
   }
 
   private exibirColunas(): string[]{

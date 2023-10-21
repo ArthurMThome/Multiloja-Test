@@ -66,16 +66,16 @@ namespace Multiloja_DAL.Repositories.CarrinhoRepositories
             }
         }
 
-        public bool Update(int idCarrinho)
+        public bool Update(string ids)
         {
             try
             {
-                var _sql = @"   UPDATE tb_carrinho
+                var _sql = @$"   UPDATE tb_carrinho
                                 SET 
                                     idStatus = 2
-                                WHERE idCarrinho = @idCarrinho;";
+                                WHERE idCarrinho IN ({ids});";
 
-                return _dapper.UpdateOrDelete<Carrinho>(_sql, new Carrinho { idCarrinho = idCarrinho });
+                return _dapper.UpdateOrDelete<Carrinho>(_sql);
             }
             catch (Exception ex)
             {
