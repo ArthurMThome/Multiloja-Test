@@ -49,6 +49,24 @@ namespace Multiloja_BLL.Services.ProdutoServices
             }
         }
 
+        public DefaultReturn<List<ProdutoVO>> FindByIds(string ids)
+        {
+            try
+            {
+                //var idsToSearch = string.Join(",", ids);
+                var retornoTipo = _repository.FindByIds(ids);
+
+                if (retornoTipo == null)
+                    return new DefaultReturn<List<ProdutoVO>> { httpStatusCode = System.Net.HttpStatusCode.BadRequest, msg = "Produto não encontrado." };
+
+                return new DefaultReturn<List<ProdutoVO>> { httpStatusCode = System.Net.HttpStatusCode.OK, obj = _converter.Parse(retornoTipo) };
+            }
+            catch (Exception ex)
+            {
+                return new DefaultReturn<List<ProdutoVO>> { httpStatusCode = System.Net.HttpStatusCode.BadRequest, msg = $"Erro: {ex.Message}." };
+            }
+        }
+
         public DefaultReturn<List<ProdutoVO>> GetAll()
         {
             try

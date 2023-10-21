@@ -79,6 +79,30 @@ namespace Multiloja_DAL.Repositories.ProdutoRepositories
             }
         }
 
+        public List<Produto> FindByIds(string ids)
+        {
+            try
+            {
+                var _sql = @$"   SELECT idProduto
+                                    ,strSku
+                                    ,strTitulo
+                                    ,strDescricao
+                                    ,decValor
+                                    ,dtDataCriacao
+                                    ,dtDataAlterado
+                                    ,idStatus
+                                    ,intQuantidade
+                                FROM tb_produto
+                                WHERE idProduto IN ({ids})";
+
+                return _dapper.Select<Produto>(_sql);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<Produto> GetAll()
         {
             try

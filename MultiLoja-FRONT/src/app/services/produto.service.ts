@@ -28,6 +28,11 @@ export class ProdutoService {
     return this.http.get<any>(apiurl);
   }
 
+  pegarPorIds(produtoIds: string): Observable<any>{
+    const apiurl = `${this.apiUrl}/ids/${produtoIds}`;
+    return this.http.get<any>(apiurl);
+  }
+
   criarProduto(produto: object): Observable<any>{
     const apiurl = `${this.apiUrl}`;
     return this.http.post<any>(apiurl, produto);

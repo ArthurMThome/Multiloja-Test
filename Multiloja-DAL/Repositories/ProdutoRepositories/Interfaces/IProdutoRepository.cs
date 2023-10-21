@@ -6,6 +6,7 @@ namespace Multiloja_DAL.Repositories.ProdutoRepositories.Interfaces
     {
         int Create(Produto obj);
         Produto FindById(int id);
+        List<Produto> FindByIds(string ids);
         List<Produto> GetAll();
     }
 }

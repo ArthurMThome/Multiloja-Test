@@ -22,6 +22,12 @@ namespace Multiiloja_BACK.Controllers
             return _service.FindById(id);
         }
 
+        [HttpGet("ids/{ids}")]
+        public DefaultReturn<List<ProdutoVO>> FindByIds(string ids)
+        {
+            return _service.FindByIds(ids);
+        }
+
         [HttpPost]
         public DefaultReturn<int> Post([FromBody] ProdutoVO contato)
         {
