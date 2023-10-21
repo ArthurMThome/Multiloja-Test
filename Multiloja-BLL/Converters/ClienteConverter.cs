@@ -13,7 +13,7 @@ namespace Multiloja_BLL.Converters
             return new Cliente()
             {
                 idCliente = origin.ClienteId,
-                idDocumento = origin.DocumentoId,
+                strDocumento = origin.Documento,
                 strPrimeiroNome = origin.PrimeiroNome,
                 strUltimoNome = origin.UltimoNome,
                 strCelular = origin.Celular,
@@ -39,7 +39,7 @@ namespace Multiloja_BLL.Converters
             return new ClienteVO()
             {
                 ClienteId = origin.idCliente,
-                DocumentoId = origin.idDocumento,
+                Documento = origin.strDocumento,
                 PrimeiroNome = origin.strPrimeiroNome,
                 UltimoNome = origin.strUltimoNome,
                 Celular = origin.strCelular,

@@ -1,1 +1,129 @@
-<p>cliente works!</p>
+<div *ngIf="!clientes">
+    <mat-progress-bar mode="buffer"></mat-progress-bar>
+  </div>
+  
+  <div class="dadosCategorias" *ngIf="clientes">
+
+    <h1>CLIENTES</h1>
+
+    <form [formGroup]="formulario">
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="inputEmail4">Primeiro nome</label>
+          <input type="text" class="form-control" formControlName="primeiroNome" required [class.is-invalid] = "formulario.get('primeiroNome').invalid && formulario.get('primeiroNome').touched">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputPassword4">Ultimo nome</label>
+          <input type="text" class="form-control" formControlName="ultimoNome" required [class.is-invalid] = "formulario.get('ultimoNome').invalid && formulario.get('ultimoNome').touched">
+        </div>        
+      </div>      
+      
+      <div class="form-row">
+        <div class="form-group col-md-2">
+          <label for="inputPassword4">Celular</label>
+          <input type="text" class="form-control" placeholder="DDD+NUMERO" formControlName="celular" required [class.is-invalid] = "formulario.get('celular').invalid && formulario.get('celular').touched">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputPassword4">E-mail</label>
+          <input type="email" class="form-control" formControlName="email" required [class.is-invalid] = "formulario.get('email').invalid && formulario.get('email').touched">
+        </div>      
+      </div>
+      <div class="form-row">        
+        <div class="form-group col-md-2">
+          <label for="inputCEP">Data Nascimento</label>
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Escolha a data" formControlName="dataNascimento" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+          </mat-form-field>
+        </div> 
+        <div class="form-group col-md-2">
+          <label for="inputPassword4">CPF</label>
+          <input type="number" class="form-control" formControlName="documento" required [class.is-invalid] = "formulario.get('documento').invalid && formulario.get('documento').touched">
+        </div>
+      </div>
+      <button type="submit" [disabled]="formulario.invalid"  (click)="salvarCliente()" mat-raised-button>Cadastrar Cliente</button>
+    </form>
+
+    <br>
+    <br>
+  
+    <table mat-table matSort [dataSource]="clientes" class="mat-elevation-z8 tabela">
+  
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.clienteId }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="documento">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>CPF</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.documento }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="primeiroNome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Primeiro nome</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.primeiroNome }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ultimoNome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Ultimo nome</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.ultimoNome }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="celular">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Celular</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.celular }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>E-mail</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.email }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataNascimento">
+        <th mat-header-cell *matHeaderCellDef>Data Nascimento</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.dataNascimento }}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let cliente">
+          {{ cliente.statusId }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataCriacao">
+        <th mat-header-cell *matHeaderCellDef>Data Criação</th>
+        <td mat-cell *matCellDef="let produto">
+          {{ produto.dataCriacao }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataAlterado">
+        <th mat-header-cell *matHeaderCellDef>Data Alterado</th>
+        <td mat-cell *matCellDef="let produto">
+          {{ produto.dataAlterado }}
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColunms"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColunms"></tr>
+  
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+  </div>

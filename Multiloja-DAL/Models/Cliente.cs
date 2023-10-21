@@ -4,7 +4,7 @@
     {
         public int idCliente { get; set; }
 
-        public int idDocumento { get; set; }
+        public string strDocumento { get; set; }
 
         public string strPrimeiroNome { get; set; }
 

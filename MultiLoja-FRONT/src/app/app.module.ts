@@ -18,6 +18,13 @@ import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table'  
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -47,7 +54,14 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatRippleModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule
   ],
   providers: [
     HttpClientModule,

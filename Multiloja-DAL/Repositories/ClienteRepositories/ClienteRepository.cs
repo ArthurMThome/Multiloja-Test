@@ -18,7 +18,7 @@ namespace Multiloja_DAL.Repositories.ClienteRepositories
             try
             {
                 var _sql = @"   INSERT INTO tb_cliente
-                                       (idDocumento
+                                       (strDocumento
                                        ,strPrimeiroNome
                                        ,strUltimoNome
                                        ,strCelular
@@ -27,7 +27,7 @@ namespace Multiloja_DAL.Repositories.ClienteRepositories
                                        ,idStatus
                                        ,dtDataAlterado)
                                 VALUES
-                                       (1
+                                       (@strDocumento
                                        ,@strPrimeiroNome
                                        ,@strUltimoNome
                                        ,@strCelular
@@ -39,7 +39,7 @@ namespace Multiloja_DAL.Repositories.ClienteRepositories
 
                 return _dapper.InsertReturnInt(_sql, new Cliente
                 {
-                    idDocumento = obj.idDocumento,
+                    strDocumento = obj.strDocumento,
                     strPrimeiroNome = obj.strPrimeiroNome,
                     strUltimoNome = obj.strUltimoNome,
                     strCelular = obj.strCelular,
@@ -59,7 +59,7 @@ namespace Multiloja_DAL.Repositories.ClienteRepositories
             try
             {
                 var _sql = @"   SELECT idCliente
-                                      ,idDocumento
+                                      ,strDocumento
                                       ,strPrimeiroNome
                                       ,strUltimoNome
                                       ,strCelular
@@ -68,7 +68,8 @@ namespace Multiloja_DAL.Repositories.ClienteRepositories
                                       ,idStatus
                                       ,dtDataCriacao
                                       ,dtDataAlterado
-                                  FROM tb_cliente";
+                                FROM tb_cliente
+                                ORDER BY idCliente DESC";
 
                 return _dapper.Select<Cliente>(_sql);
             }

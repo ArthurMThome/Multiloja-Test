@@ -12,8 +12,6 @@ builder.Services.AddScoped<Multiloja_BLL.Services.StatusServices.Interfaces.ISta
 builder.Services.AddScoped<Multiloja_BLL.Services.ProdutoServices.Interfaces.IProdutoService, Multiloja_BLL.Services.ProdutoServices.ProdutoService>();
 builder.Services.AddScoped<Multiloja_BLL.Services.ClienteServices.Interfaces.IClienteService, Multiloja_BLL.Services.ClienteServices.ClienteService >();
 builder.Services.AddScoped<Multiloja_BLL.Services.CarrinhoServices.Interfaces.ICarrinhoService, Multiloja_BLL.Services.CarrinhoServices.CarrinhoService>();
-builder.Services.AddScoped<Multiloja_BLL.Services.DocumentoServices.Interfaces.IDocumentoService, Multiloja_BLL.Services.DocumentoServices.DocumentoService>();
-builder.Services.AddScoped<Multiloja_BLL.Services.TipoDocumentoServices.Interfaces.ITipoDocumentoService, Multiloja_BLL.Services.TipoDocumentoServices.TipoDocumentoService>();
 
 
 // ****************** REPOSITORIES ******************
@@ -21,8 +19,6 @@ builder.Services.AddScoped<Multiloja_DAL.Repositories.StatusRepositories.Interfa
 builder.Services.AddScoped<Multiloja_DAL.Repositories.ClienteRepositories.Interfaces.IClienteRepository, Multiloja_DAL.Repositories.ClienteRepositories.ClienteRepository>();
 builder.Services.AddScoped<Multiloja_DAL.Repositories.ProdutoRepositories.Interfaces.IProdutoRepository, Multiloja_DAL.Repositories.ProdutoRepositories.ProdutoRepository>();
 builder.Services.AddScoped<Multiloja_DAL.Repositories.CarrinhoRepositories.Interfaces.ICarrinhoRepository, Multiloja_DAL.Repositories.CarrinhoRepositories.CarrinhoRepository>();
-builder.Services.AddScoped<Multiloja_DAL.Repositories.DocumentoRepositories.Interfaces.IDocumentoRepository, Multiloja_DAL.Repositories.DocumentoRepositories.DocumentoRepository>();
-builder.Services.AddScoped<Multiloja_DAL.Repositories.TipoDocumentoRepositories.Interfaces.ITipoDocumentoRepository, Multiloja_DAL.Repositories.TipoDocumentoRepositories.TipoDocumentoRepository>();
 
 // precisa ver realmente se vai precisar de CORS ou nao. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 builder.Services.AddCors(options => options.AddDefaultPolicy(builder =>

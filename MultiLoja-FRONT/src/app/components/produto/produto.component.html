@@ -1,8 +1,10 @@
 <div *ngIf="!produtos">
     <mat-progress-bar mode="buffer"></mat-progress-bar>
-  </div>
+  </div> 
   
   <div class="dadosCategorias" *ngIf="produtos">
+
+    <h1>PRODUTOS</h1>
 
     <form [formGroup]="formulario">
       <div class="form-row">
